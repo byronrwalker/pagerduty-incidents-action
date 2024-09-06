@@ -1,0 +1,19 @@
+name: 'PagerDuty Incidents Action'
+description: 'Fetch incidents from PagerDuty based on schedule and time range'
+inputs:
+  schedule_id:
+    description: 'The PagerDuty schedule ID'
+    required: true
+  start_time:
+    description: 'Start time of the range (in ISO 8601 format)'
+    required: true
+  end_time:
+    description: 'End time of the range (in ISO 8601 format)'
+    required: true
+  pagerduty_token:
+    description: 'PagerDuty API Token'
+    required: true
+
+runs:
+  using: 'node18'
+  main: 'index.js'
