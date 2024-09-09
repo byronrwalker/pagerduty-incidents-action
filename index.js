@@ -1,5 +1,5 @@
-const core = require('@actions/core');
-const axios = require('axios');
+import core from '@actions/core';
+import {api} from '@pagerduty/pdjs';
 
 async function run() {
   try {
@@ -18,14 +18,14 @@ async function run() {
     // Get incidents from PagerDuty
     const incidents = await fetchIncidents(scheduleId, startTime, endTime, headers);
     
-    if (incidents.length === 0) {
-      core.info('No incidents found for the given schedule and time range.');
-    } else {
-      core.info(`Found ${incidents.length} incidents:`);
-      incidents.forEach(incident => {
-        core.info(`- Incident ID: ${incident.id}, Description: ${incident.description}`);
-      });
-    }
+    // if (incidents.length === 0) {
+    //   core.info('No incidents found for the given schedule and time range.');
+    // } else {
+    //   core.info(`Found ${incidents.length} incidents:`);
+    //   incidents.forEach(incident => {
+    //     core.info(`- Incident ID: ${incident.id}, Description: ${incident.description}`);
+    //   });
+    // }
 
   } catch (error) {
     core.setFailed(error.message);
@@ -33,20 +33,10 @@ async function run() {
 }
 
 async function fetchIncidents(scheduleId, startTime, endTime, headers) {
-  try {
-    const response = await axios.get(`https://api.pagerduty.com/incidents`, {
-      headers,
-      params: {
-        'since': startTime,
-        'until': endTime,
-        'schedule_ids[]': scheduleId
-      }
-    });
-    
-    return response.data.incidents;
-  } catch (error) {
-    throw new Error(`Failed to fetch incidents: ${error.message}`);
-  }
+  const pd = api({token: `${pagerdutyToken}`});
+  pd.get('/incidents')
+    .then({data, resource, next} => console.log(data, resource, next))
+    .catch(console.error);
 }
 
 run();
