@@ -32,7 +32,7 @@ async function run() {
         });
       }
 
-      core.setOutput('incidents', JSON.stringify(incidents, null, 2));
+      core.setOutput('incidents', incidents);
     })
     .catch(console.error);
   } catch (error) {
