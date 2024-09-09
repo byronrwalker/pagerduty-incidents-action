@@ -31,6 +31,8 @@ async function run() {
           core.info(`- Incident ID: ${incident.id}, Description: ${incident.description}`);
         });
       }
+
+      core.setOutput('incidents', JSON.stringify(incidents, null, 2));
     })
     .catch(console.error);
   } catch (error) {
