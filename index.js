@@ -4,7 +4,6 @@ import {api} from '@pagerduty/pdjs';
 async function run() {
   try {
     // Inputs
-    const scheduleId = core.getInput('schedule_id');
     const startTime = core.getInput('start_time');
     const endTime = core.getInput('end_time');
     const pagerdutyToken = core.getInput('pagerduty_token');
@@ -38,8 +37,8 @@ async function fetchIncidents(pagerdutyToken, team_id, startTime, endTime) {
   pd.get('/incidents', {
     data: {
       "team_ids[]": team_id,
-      "since": startTime.toISOString(),
-      "until": endTime.toISOString(),
+      "since": startTime,
+      "until": endTime,
     }
   }).then(({data, resource, next}) => console.log(data, resource, next))
     .catch(console.error);
