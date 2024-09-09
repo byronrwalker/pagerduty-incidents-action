@@ -33,6 +33,7 @@ async function run() {
       }
 
       core.setOutput('incidents', incidents);
+      core.setOutput('incident_count', incidents.length);
     })
     .catch(console.error);
   } catch (error) {
