@@ -1,6 +1,7 @@
 {
     "name": "pagerduty-incident-action",
     "version": "1.0.0",
+    "type": "module",
     "description": "GitHub Action to fetch PagerDuty incidents for a given schedule and time range.",
     "main": "index.js",
     "dependencies": {
