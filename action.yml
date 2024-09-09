@@ -13,6 +13,9 @@ inputs:
   pagerduty_token:
     description: 'PagerDuty API Token'
     required: true
+  team_id:
+    description: 'Team Id'
+    required: true
 
 runs:
   using: 'node20'
