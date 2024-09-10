@@ -8,7 +8,7 @@ async function run() {
     const pagerdutyToken = core.getInput('pagerduty_token');
     const teamId = core.getInput('team_id');
     const statuses = core.getInput('statuses');
-
+    console.log(statuses);
     // statuses is a comma separated string, we need to split it by comma and add as many as there are to the data object below one by one
     const dateRange = core.getInput('date_range');
     const dataObject = {
@@ -20,7 +20,7 @@ async function run() {
     
     const statusesArray = statuses.split(',');
     statusesArray.forEach(status => {
-      dataObject[`statuses[]`] = status;
+      dataObject[`statuses[]`] = ['triggered', 'acknowledged'];
     });
     
     console.log(dataObject);
