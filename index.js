@@ -20,7 +20,7 @@ async function run() {
     
     const statusesArray = statuses.split(',');
     statusesArray.forEach(status => {
-      dataObject[`statuses[]`] = ['triggered', 'acknowledged'];
+      dataObject[`statuses[]`] = ['triggered', 'resolved'];
     });
     
     console.log(dataObject);
