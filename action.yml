@@ -3,24 +3,20 @@ description: 'Fetch incidents from PagerDuty based on team and time range'
 inputs:
   start_time:
     description: 'Start time of the range (in ISO 8601 format)'
-    required: false
+    required: true
   end_time:
     description: 'End time of the range (in ISO 8601 format)'
-    required: false
+    required: true
   pagerduty_token:
     description: 'PagerDuty API Token'
     required: true
   team_id:
     description: 'Team Id'
-    required: false
+    required: true
   statuses:
     description: 'Incident Statuses'
     required: false
     default: 'triggered'
-  date_range:
-    description: 'Date Range'
-    required: false
-    default: 'all'
 
 runs:
   using: 'node20'
