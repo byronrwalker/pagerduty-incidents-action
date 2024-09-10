@@ -19,6 +19,8 @@ async function run() {
         // "team_ids[]": teamId,
         // "since": startTime,
         // "until": endTime,
+        "statuses[]": "triggered",
+        "statuses[]": "acknowledged"
       }
     })
     .then(({data}) => {

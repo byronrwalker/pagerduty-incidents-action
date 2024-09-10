@@ -3,18 +3,15 @@ description: 'Fetch incidents from PagerDuty based on schedule and time range'
 inputs:
   start_time:
     description: 'Start time of the range (in ISO 8601 format)'
-    required: false
+    required: true
   end_time:
     description: 'End time of the range (in ISO 8601 format)'
-    required: false
+    required: true
   pagerduty_token:
     description: 'PagerDuty API Token'
     required: true
   team_id:
     description: 'Team Id'
-    required: false
-  date_range:
-    description: 'Date range to fetch incidents for'
     required: true
 
 runs:
