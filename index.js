@@ -10,9 +10,10 @@ async function run() {
     const statuses = core.getInput('statuses');
 
     const dataObject = {
-      "team_ids[]": teamId,
-      "since": startTime,
-      "until": endTime,
+      // "team_ids[]": teamId,
+      // "since": startTime,
+      // "until": endTime,
+      "date_range": "all",
     }
     
     dataObject[`statuses[]`] = statuses.split(',');
