@@ -12,7 +12,7 @@ async function run() {
     // statuses is a comma separated string, we need to split it by comma and add as many as there are to the data object below one by one
     const dateRange = core.getInput('date_range');
     const dataObject = {
-      // "team_ids[]": teamId,
+      "team_ids[]": teamId,
       // "since": startTime,
       // "until": endTime,
       "date_range": dateRange,
