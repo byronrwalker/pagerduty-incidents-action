@@ -15,7 +15,8 @@ async function run() {
 
     pd.get('/incidents', {
       data: {
-        date_range: dateRange
+        date_range: dateRange,
+        statuses[]: statuses,
         // "team_ids[]": teamId,
         // "since": startTime,
         // "until": endTime,
