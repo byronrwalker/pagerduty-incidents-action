@@ -8,19 +8,15 @@ async function run() {
     const pagerdutyToken = core.getInput('pagerduty_token');
     const teamId = core.getInput('team_id');
     const statuses = core.getInput('statuses');
-    console.log(statuses);
-    // statuses is a comma separated string, we need to split it by comma and add as many as there are to the data object below one by one
-    const dateRange = core.getInput('date_range');
+
     const dataObject = {
       "team_ids[]": teamId,
-      // "since": startTime,
-      // "until": endTime,
-      "date_range": dateRange,
+      "since": startTime,
+      "until": endTime,
     }
     
     dataObject[`statuses[]`] = statuses.split(',');
 
-    console.log(dataObject);
     const pd = api({token: `${pagerdutyToken}`});
 
     pd.get('/incidents', {
