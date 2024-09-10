@@ -9,7 +9,7 @@ async function run() {
     const teamId = core.getInput('team_id');
     const statuses = core.getInput('statuses');
 
-    const dateRange = core.getInput(date_range);
+    const dateRange = core.getInput('date_range');
     
     const pd = api({token: `${pagerdutyToken}`});
 
