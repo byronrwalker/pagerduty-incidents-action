@@ -18,11 +18,8 @@ async function run() {
       "date_range": dateRange,
     }
     
-    const statusesArray = statuses.split(',');
-    statusesArray.forEach(status => {
-      dataObject[`statuses[]`] = ['triggered', 'resolved'];
-    });
-    
+    dataObject[`statuses[]`] = statuses.split(',');
+
     console.log(dataObject);
     const pd = api({token: `${pagerdutyToken}`});
 
