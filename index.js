@@ -7,20 +7,19 @@ async function run() {
     const endTime = core.getInput('end_time');
     const pagerdutyToken = core.getInput('pagerduty_token');
     const teamId = core.getInput('team_id');
-    // we can get rid of this later
-    const dateRange = core.getInput('date_range');
+    const statuses = core.getInput('statuses');
+
+    const dateRange = core.getInput(date_range);
     
     const pd = api({token: `${pagerdutyToken}`});
 
     pd.get('/incidents', {
       data: {
-        // get rid of this, and uncomment below:
-        "date_range": dateRange,
+        date_range: dateRange
         // "team_ids[]": teamId,
         // "since": startTime,
         // "until": endTime,
-        // "statuses[]": "triggered",
-        // "statuses[]": "acknowledged"
+        // "statuses[]": statuses
       }
     })
     .then(({data}) => {

@@ -1,5 +1,5 @@
 name: 'PagerDuty Incidents Action'
-description: 'Fetch incidents from PagerDuty based on schedule and time range'
+description: 'Fetch incidents from PagerDuty based on team and time range'
 inputs:
   start_time:
     description: 'Start time of the range (in ISO 8601 format)'
@@ -12,10 +12,15 @@ inputs:
     required: true
   team_id:
     description: 'Team Id'
-    required: true
+    required: false
+  statuses:
+    description: 'Incident Statuses'
+    required: false
+    default: 'triggered'
   date_range:
     description: 'Date Range'
-    required: true
+    required: false
+    default: 'all'
 
 runs:
   using: 'node20'
