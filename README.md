@@ -31,12 +31,11 @@ jobs:
       - name: Fetch PagerDuty Incidents
         uses: byronrwalker/pagerduty-incidents-action@v1.0.0
         with:
-          team_id: 'P0AWF24'  # Replace with your PagerDuty schedule ID
+          pagerduty_token: ${{ secrets.PAGERDUTY_TOKEN }}  # Your PagerDuty API token
+          team_id: 'P0AWF24'  # Replace with your PagerDuty team ID
           start_time: '2024-09-06T00:00:00Z'  # Start of time range (ISO format)
           end_time: '2024-09-06T23:59:59Z'  # End of time range (ISO format)
           statuses: 'triggered'
-        env:
-          PAGERDUTY_TOKEN: ${{ secrets.PAGERDUTY_TOKEN }}  # Your PagerDuty API token
 ```
 
 ## Inputs
