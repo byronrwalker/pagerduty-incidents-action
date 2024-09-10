@@ -1,9 +1,6 @@
 name: 'PagerDuty Incidents Action'
-description: 'Fetch incidents from PagerDuty based on schedule and time range'
+description: 'Fetch incidents from PagerDuty based on team and time range'
 inputs:
-  schedule_id:
-    description: 'The PagerDuty schedule ID'
-    required: true
   start_time:
     description: 'Start time of the range (in ISO 8601 format)'
     required: true
@@ -13,10 +10,17 @@ inputs:
   pagerduty_token:
     description: 'PagerDuty API Token'
     required: true
+  team_id:
+    description: 'Team Id'
+    required: true
+  statuses:
+    description: 'Incident Statuses'
+    required: false
+    default: 'triggered'
 
 runs:
   using: 'node20'
-  main: 'dist/index.js'
+  main: 'index.js'
 branding:
   icon: "bell"
   color: "purple"
