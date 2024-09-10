@@ -23,6 +23,7 @@ async function run() {
       dataObject[`statuses[]`] = status;
     });
     
+    console.log(dataObject);
     const pd = api({token: `${pagerdutyToken}`});
 
     pd.get('/incidents', {
