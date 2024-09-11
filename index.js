@@ -24,17 +24,17 @@ async function run() {
     })
     .then(({data}) => {
       const incidents = data.incidents;
-      if (incidents.length === 0) {
-        core.info('No incidents found for the given schedule and time range.');
-      } else {
+      if (incidents && incidents.length > 0) {
         core.info(`Found ${incidents.length} incidents:`);
         incidents.forEach(incident => {
           core.info(`- Incident ID: ${incident.id}, Description: ${incident.description}`);
-        });
+        })
+        core.setOutput('incidents', incidents);
+        core.setOutput('incident_count', incidents.length);
+      } else {
+        core.info('No incidents found for the given schedule and time range.');
+        core.setOutput('incident_count', 0);
       }
-
-      core.setOutput('incidents', incidents);
-      core.setOutput('incident_count', incidents.length);
     })
     .catch(console.error);
   } catch (error) {
