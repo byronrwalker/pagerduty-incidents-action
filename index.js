@@ -24,13 +24,13 @@ async function run() {
     })
     .then(({data}) => {
       const incidents = data.incidents;
-      if (incidents && incidents.length === 0) {
-        core.info('No incidents found for the given schedule and time range.');
-      } else {
+      if (incidents && incidents.length > 0) {
         core.info(`Found ${incidents.length} incidents:`);
         incidents.forEach(incident => {
           core.info(`- Incident ID: ${incident.id}, Description: ${incident.description}`);
-        });
+        })
+      } else {
+        core.info('No incidents found for the given schedule and time range.');
       }
 
       core.setOutput('incidents', incidents);
