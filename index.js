@@ -24,7 +24,7 @@ async function run() {
     })
     .then(({data}) => {
       const incidents = data.incidents;
-      if (incidents?.length === 0) {
+      if (incidents && incidents.length === 0) {
         core.info('No incidents found for the given schedule and time range.');
       } else {
         core.info(`Found ${incidents.length} incidents:`);
